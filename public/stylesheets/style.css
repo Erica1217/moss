@@ -1,0 +1,56 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* 애플리케이션은 800픽셀 너비에 가로로 중앙 정렬 */
+#content {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 현재 참여하고 있는 채팅방 이름 표시하는 영역 */
+#room {
+  background-color: #ddd;
+  margin-bottom: 1em;
+}
+
+/* 메시지 표시 영역 */
+#messages {
+  width:690px;
+  height:300px;
+  overflow: auto;
+  background-color: #eee;
+  margin-bottom: 1em;
+  margin-right: 10px;
+}
+
+#room-list {
+  float: right;
+  width: 100px;
+  height: 300px;
+  overflow: auto;
+}
+
+#room-list div {
+  border-bottom: 1px solid #eee;
+}
+
+#room-list div:hover {
+  background-color: #ddd;
+}
+
+#send-message {
+  width: 700px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+#help {
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
