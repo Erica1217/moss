@@ -59,12 +59,18 @@ $(document).ready(function() {
   //입장할 수 있는 채팅방 목록 출력
   socket.on('rooms', function(rooms) {
     $('#room-list').empty();
+    //$('#room-list').append(divEscapedContentElement("Lobby1"));
+    //$('#room-list').append(divEscapedContentElement("Lobby2"));
+    //$('#room-list').append(divEscapedContentElement("Lobby3"));
+
     for(var room in rooms) {
-      room = room.substring(1, room.length);
+      //room = room.substring(0, room.length);
       if(room != '') {
         $('#room-list').append(divEscapedContentElement(room));
+        //$('#room-list').append(room);
       }
     }
+    //$('#room-list').append(rooms);
 
     //채팅방 이름 클릭해 채팅방 변경 가능하게
     $('#room-list div').click(function() {
