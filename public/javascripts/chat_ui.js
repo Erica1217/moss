@@ -18,8 +18,7 @@ function processUserInput(chatApp, socket) {
       $('messages').append(divSystemContentElement(systemMessage));
     }
   } else {
-    chatApp.sendMessage($('#room').text(), message);  // 다른 모든 사용자에게 입력한 내용을 전달
-    $('#messages').append(divEscapedContentElement(message));
+    chatApp.sendMessage('^' + $('#room').text(), message);  // 다른 모든 사용자에게 입력한 내용을 전달
     $('#messages').scrollTop($('#messages').prop('scrollHeight'));
   }
 
@@ -46,7 +45,7 @@ $(document).ready(function() {
 
   // 채팅방 변경 결과 출력
   socket.on('joinResult', function(result) {
-    $('#room').text(result.room);
+    $('#room').text(result.room.substring(1));
     $('#messages').append(divSystemContentElement('Room changed.'));
   });
 
@@ -59,18 +58,12 @@ $(document).ready(function() {
   //입장할 수 있는 채팅방 목록 출력
   socket.on('rooms', function(rooms) {
     $('#room-list').empty();
-    //$('#room-list').append(divEscapedContentElement("Lobby1"));
-    //$('#room-list').append(divEscapedContentElement("Lobby2"));
-    //$('#room-list').append(divEscapedContentElement("Lobby3"));
 
     for(var room in rooms) {
-      //room = room.substring(0, room.length);
-      if(room != '') {
-        $('#room-list').append(divEscapedContentElement(room));
-        //$('#room-list').append(room);
+      if(room.substring(0, 1) == '^') {
+        $('#room-list').append(divEscapedContentElement(room.substring(1, room.length)));
       }
     }
-    //$('#room-list').append(rooms);
 
     //채팅방 이름 클릭해 채팅방 변경 가능하게
     $('#room-list div').click(function() {
